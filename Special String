@@ -1,0 +1,26 @@
+def min_ascii_distance(A, S):
+    total_distance = 0
+    found_all = True
+    
+    for char_a in A:
+        # Find the minimum ASCII distance character in S
+        min_distance = float('inf')
+        for char_s in S:
+            distance = abs(ord(char_a) - ord(char_s))
+            if distance < min_distance:
+                min_distance = distance
+        
+        # If the character from A is not in S, we add the minimum distance
+        if min_distance != 0:
+            found_all = False
+            total_distance += min_distance
+    
+    return total_distance if not found_all else 0
+
+# Sample Input
+A = "abcd"
+S = "xyz"
+
+# Finding the minimum total ASCII distance
+result = min_ascii_distance(A, S)
+print(result)  # Output: 86
